@@ -1,0 +1,47 @@
+# ignores for flask backend
+# application artifacts
+demo-b/app/uploads
+demo-b/app/scrubbed
+demo-b/app/embeddings
+demo-b/app/occurrences
+demo-b/app/alignments
+demo-b/app/tokenized
+
+# database holding all application data
+demo-b/app/db/demo_app.db
+# ignore python build artifacts (all *.pyc files)
+*.pyc
+
+# python env files
+venv/
+.env.local
+.env.*.local
+__pycache__/
+
+# ignore large testing files
+demo-b/test/preprocessing/test_data
+# ignores for vue frontend
+node_modules
+dist
+dist-ssr
+*.local
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
