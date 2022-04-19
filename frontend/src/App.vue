@@ -26,7 +26,7 @@ fetch("/api/exampleGetEndpoint", {
 
 
 <template>
-<div id="body">
+<div>
   <div class="container-xl">
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
@@ -51,50 +51,6 @@ fetch("/api/exampleGetEndpoint", {
   </div>
 </nav>
 
-
-    <div class="row">
-
-      <div class="col">
-        <div class="form-check test-start">
-          <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-          <label class="form-check-label" for="flexRadioDefault1">
-            &#60$40,000
-          </label>
-        </div>
-        <div class="form-check">
-          <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-          <label class="form-check-label" for="flexRadioDefault2">
-            $40,000-$60,000
-          </label>
-        </div>
-      </div>
-    
-      <div class="col">
-        <div class="form-check test-start">
-          <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-          <label class="form-check-label" for="flexRadioDefault1">
-            $60,001-$80,000
-          </label>
-        </div>
-        <div class="form-check">
-          <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-          <label class="form-check-label" for="flexRadioDefault2">
-            $80,001-$100,000
-          </label>
-        </div>
-      </div>
-
-
-      <div class="col">
-        <div class="form-check test-start">
-          <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-          <label class="form-check-label" for="flexRadioDefault1">
-            &#62$100,001
-          </label>
-        </div>
-      </div>         
-
-    </div>
 
 
 </div>
