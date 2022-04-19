@@ -4,9 +4,9 @@ const props = defineProps(["somePropData"])
 </script>
 
 <template>
-<div>
-Here is the response from the backend: {{ somePropData }}
-</div>
+	<div>
+		Here is the response from the backend: {{ somePropData }}
+	</div>
 </template>
 
 <style scoped>
