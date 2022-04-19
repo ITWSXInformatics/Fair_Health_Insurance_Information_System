@@ -23,8 +23,10 @@ fetch("/api/exampleGetEndpoint", {
     });
 }
 </script>
+
+
 <template>
-<div>
+<div id="body">
   <div class="container-xl">
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
@@ -113,6 +115,12 @@ fetch("/api/exampleGetEndpoint", {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  background: white;
+  border-radius: 25px;
+}
+
+body{
+  background: #E0EAFC;
+  margin: 3%;
 }
 </style>
