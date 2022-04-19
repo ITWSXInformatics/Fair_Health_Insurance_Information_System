@@ -12,7 +12,6 @@ const count = ref(0)
   <div>
   this content is from inside the form page
 
-
 <input v-model="store.someValue">
 </div>
 
