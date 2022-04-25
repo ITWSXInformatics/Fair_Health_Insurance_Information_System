@@ -54,13 +54,6 @@ fetch("/api/exampleGetEndpoint", {
 <Home v-if="current_tab==0" active></Home>
 <Form v-if="current_tab==1"></Form>
 <Results v-if="current_tab==2"></Results>
-This is the main app component
-Below you can see a component that only gets rendered after the frontend hits the backend
-Here is some data from the global store:
-{{store.someValue}}
-<ExampleChartComponent />
-<button type="button" class="btn btn-primary" @click="hitExampleGetEndpoint()">Hit Api</button>
-<ExampleComponent v-if="an_example_of_a_reactive_variable !== null" :some-prop-data="an_example_of_a_reactive_variable"/>
 </div>
 </template>
 
