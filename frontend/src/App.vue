@@ -31,14 +31,14 @@ fetch("/api/exampleGetEndpoint", {
 
 <template>
 
-<div id="body">
+<div>
 <div id="main-plate" class="container-fluid">
   <div class="row">
-    <div class="col-2">
+    <div class="col-3">
       <nav class="navbar flex-column navbar-light bg-light">
         <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#" @click.prevent="current_tab=0">Home</a>
+              <a class="nav-link" href="#" @click.prevent="current_tab=0">Home</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#" @click.prevent="current_tab=1">Form</a>
@@ -50,7 +50,7 @@ fetch("/api/exampleGetEndpoint", {
           </ul>
       </nav>
     </div>
-    <div class="col-10">
+    <div class="col-9">
       <Home v-if="current_tab==0"></Home>
       <Form v-if="current_tab==1"></Form>
       <Results v-if="current_tab==2"></Results>
@@ -68,7 +68,7 @@ fetch("/api/exampleGetEndpoint", {
   -moz-osx-font-smoothing: grayscale;
   text-align: left;
   color: #2c3e50;
-  background: white;
+  background: #F9F9F9;
   border-radius: 25px;
 }
 
@@ -81,11 +81,19 @@ body > * {
         flex-shrink: 0;
       }
 
-#body {
+body {
   height: 100%;
   display: flex;
   height: 87vh;
   min-height: 87vh;
+  flex-direction: column;
+}
+
+#app-body {
+  height: 100%;
+  display: flex;
+  height: 83vh;
+  min-height: 83vh;
   flex-direction: column;
 }
 
@@ -103,7 +111,6 @@ body > * {
 }
 
 .subtext {
-  
   color: grey;
 }
 
@@ -111,7 +118,7 @@ hr {
         width: 100%;
         margin-left: auto;
         margin-right: auto;
-        color: grey;
+        color: rgb(168, 167, 167);
       }
 
 h5 {

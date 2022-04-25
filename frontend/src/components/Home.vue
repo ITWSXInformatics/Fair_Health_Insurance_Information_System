@@ -13,11 +13,11 @@ const count = ref(0)
 
 
 <template>
-<div class="container-fluid">
-
+<div id="app-body" class="main container-fluid">
           <h1><b>Overview</b></h1>
           <p class="subtext">Project Summary and Purpose</p>
           <hr/>
+          <br>
           <div class="home-text">
             <pre/>
             <h5><b>What is the Fair Value Health Insurance Calculator?</b></h5>
@@ -65,5 +65,15 @@ const count = ref(0)
 <style scoped>
 a {
   color: #42b983;
+}
+
+.home-text {
+  background: white;
+  box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.05);
+  border-radius: 10px;
+  padding-left: 3%;
+  padding-right: 3%;
+  padding-top: 2%;
+  padding-bottom: 2%;
 }
 </style>
