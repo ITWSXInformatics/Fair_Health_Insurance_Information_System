@@ -24,7 +24,7 @@ function validateForm() { //UNFINISHED
   <p class="subtext">Calculate the fair value of your insurance</p>
   <hr/>
   <br>
- <form onsubmit="return validateForm()"> 
+ <form name="form" onsubmit="return validateForm()"> 
 <div class="question">
   <div>
     <h3 class="text-start">Income</h3>
