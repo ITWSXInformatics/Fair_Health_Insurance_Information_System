@@ -1,5 +1,7 @@
 <script setup>
 import { ref } from 'vue'
+import 'bootstrap/dist/css/bootstrap.min.css'
+import 'bootstrap/dist/js/bootstrap.min.js'
 
 
 defineProps({
@@ -11,13 +13,13 @@ const count = ref(0)
 
 
 <template>
-<div class="container-xl mb-3">
-      <div class="row">
-        <div class="content col-12">
+<div class="container-fluid">
+
           <h1><b>Overview</b></h1>
           <p class="subtext">Project Summary and Purpose</p>
           <hr/>
           <div class="home-text">
+            <pre/>
             <h5><b>What is the Fair Value Health Insurance Calculator?</b></h5>
             <pre/>
             <p>
@@ -54,9 +56,8 @@ const count = ref(0)
               section with reasoning and results from the model.
             </p> 
             
-          </div>
+          
         </div>
-      </div>
     </div>
 
 </template>

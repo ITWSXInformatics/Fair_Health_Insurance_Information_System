@@ -7,6 +7,8 @@ import Form from "./components/Form.vue"
 import {store} from "./store.js"
 import { ref, onMounted } from "vue";
 import Lato from "typeface-lato"
+import 'bootstrap/dist/css/bootstrap.min.css'
+import 'bootstrap/dist/js/bootstrap.min.js'
 
 const current_tab = ref(0);
 // reactive variable that gets assigned when the button is clicked
@@ -29,33 +31,32 @@ fetch("/api/exampleGetEndpoint", {
 
 <template>
 <div id="body">
-  <div class="container-xl">
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">Navbar</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#" @click.prevent="current_tab=0">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#" @click.prevent="current_tab=1">Form</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#" @click.prevent="current_tab=2">Results</a>
-        </li>
-        
-      </ul>
+<div id="main-plate" class="container-fluid">
+  <div class="row">
+    <div class="col-2">
+      <nav class="navbar flex-column navbar-light bg-light">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#" @click.prevent="current_tab=0">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#" @click.prevent="current_tab=1">Form</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#" @click.prevent="current_tab=2">Results</a>
+            </li>
+            
+          </ul>
+      </nav>
+    </div>
+    <div class="col-10">
+      <Home v-if="current_tab==0"></Home>
+      <Form v-if="current_tab==1"></Form>
+      <Results v-if="current_tab==2"></Results>
     </div>
   </div>
-</nav>
 </div>
-<Home v-if="current_tab==0" active></Home>
-<Form v-if="current_tab==1"></Form>
-<Results v-if="current_tab==2"></Results>
+
 </div>
 </template>
 
@@ -73,11 +74,31 @@ fetch("/api/exampleGetEndpoint", {
 body{
   background: #E0EAFC;
   margin: 3%;
-  display: flex; flex-direction: column;
+}
+
+body > * {
+        flex-shrink: 0;
+      }
+
+#body {
+  height: 100%;
+  display: flex;
+  height: 87vh;
+  min-height: 87vh;
+  flex-direction: column;
+}
+
+.example::-webkit-scrollbar {
+  display: none;
+}
+
+#main-plate {
+  margin-top: 3%;
 }
 
 .content {
   flex-grow: 1;
+  height: 100%;
 }
 
 .subtext {
