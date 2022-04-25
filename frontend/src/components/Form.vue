@@ -145,7 +145,7 @@ const count = ref(0)
 </div>
 <br>
 <br>
-<div> 
+<div class="inputs"> 
   <h3>Your Inputs </h3>
   <br>
   <p><b>Income Bracket:</b> {{store.incomeBracket}}</p>
@@ -154,7 +154,7 @@ const count = ref(0)
   <p><b>Gender:</b> {{store.gender}}</p>
 </div>
 
-
+<br>
 <br>
   <div>
   <button type="button" id="submit" class="btn"><b>Calculate Results &ensp;</b> <i class="bi bi-arrow-right"></i></button>
@@ -163,9 +163,6 @@ const count = ref(0)
 </template>
 
 <style scoped>
-a {
-  color: #42b983;
-}
 
 #main {
   height: 100%;
@@ -176,6 +173,7 @@ a {
 
 .subtext {
   color: grey;
+  padding-bottom: 1%;
 }
 
 #submit {
@@ -203,6 +201,15 @@ a {
   background: white;
   box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.05);
   border-radius: 10px;
+  padding: 4%;
+}
+
+.inputs {
+  background: rgb(33, 52, 94);
+  box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.05);
+  border-radius: 10px;
+  color: white;
   padding: 5%;
+  padding-bottom: 3%;
 }
 </style>
