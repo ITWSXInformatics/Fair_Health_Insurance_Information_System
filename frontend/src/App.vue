@@ -6,6 +6,8 @@ import Results from "./components/Results.vue"
 import Form from "./components/Form.vue"
 import {store} from "./store.js"
 import { ref, onMounted } from "vue";
+import Lato from "typeface-lato"
+
 const current_tab = ref(0);
 // reactive variable that gets assigned when the button is clicked
 const an_example_of_a_reactive_variable = ref(null);
@@ -59,10 +61,10 @@ fetch("/api/exampleGetEndpoint", {
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: Lato, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
+  text-align: left;
   color: #2c3e50;
   background: white;
   border-radius: 25px;
@@ -71,5 +73,26 @@ fetch("/api/exampleGetEndpoint", {
 body{
   background: #E0EAFC;
   margin: 3%;
+  display: flex; flex-direction: column;
+}
+
+.content {
+  flex-grow: 1;
+}
+
+.subtext {
+  
+  color: grey;
+}
+
+hr {
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        color: grey;
+      }
+
+h5 {
+  margin-bottom: 1%;
 }
 </style>
