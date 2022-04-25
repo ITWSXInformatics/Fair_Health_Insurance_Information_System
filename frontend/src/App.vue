@@ -51,7 +51,7 @@ fetch("/api/exampleGetEndpoint", {
   </div>
 </nav>
 </div>
-<Home v-if="current_tab==0"></Home>
+<Home v-if="current_tab==0" active></Home>
 <Form v-if="current_tab==1"></Form>
 <Results v-if="current_tab==2"></Results>
 This is the main app component
