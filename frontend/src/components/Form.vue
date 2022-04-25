@@ -1,11 +1,21 @@
 <script setup>
 import { ref } from 'vue'
 import {store} from "../store.js"
+import "../index.js"
 defineProps({
   msg: String
 })
 
 const count = ref(0)
+
+
+function validateForm() { //UNFINISHED
+    let x = document.forms["myForm"]["fname"].value;
+    if (x == "") {
+      alert("Name must be filled out");
+      return false;
+    }
+  }
 </script>
 
 <template>
@@ -14,6 +24,7 @@ const count = ref(0)
   <p class="subtext">Calculate the fair value of your insurance</p>
   <hr/>
   <br>
+ <form onsubmit="return validateForm()"> 
 <div class="question">
   <div>
     <h3 class="text-start">Income</h3>
@@ -143,6 +154,7 @@ const count = ref(0)
     </div>
   </div>
 </div>
+</form>
 <br>
 <br>
 <div class="inputs"> 
