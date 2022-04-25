@@ -95,6 +95,7 @@ body {
   height: 83vh;
   min-height: 83vh;
   flex-direction: column;
+  padding-right: 3%;
 }
 
 .example::-webkit-scrollbar {
@@ -115,11 +116,11 @@ body {
 }
 
 hr {
-        width: 100%;
-        margin-left: auto;
-        margin-right: auto;
-        color: rgb(168, 167, 167);
-      }
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  color: rgb(168, 167, 167);
+}
 
 h5 {
   margin-bottom: 1%;
