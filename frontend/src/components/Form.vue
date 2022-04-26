@@ -1,6 +1,9 @@
 <script setup>
 import { computed, onMounted, ref } from 'vue'
 import {store} from "../store.js"
+onMounted(() => {
+  console.log("form page loaded!")
+})
 function incomeRadioSelect(income_bracket){
   console.log("incomeRadioSelect: income_value bin: ", income_bracket);
   store.incomeBracket = income_bracket;
@@ -235,8 +238,14 @@ function calculateResults(){
 </div>
 <br>
 <br>
+      <div class="row" v-if="validated && !isvalid">
+        <div class="alert alert-danger" role="alert">
+          Please correct your selection!
+      </div>
+      </div>
+
   <div>
-  <button type="button" id="submit" class="btn" @click="calculateResults()"><b>Calculate Results &ensp;</b> <i class="bi bi-arrow-right"></i></button>
+  <button type="button" id="submit" class="btn" @click.prevent="calculateResults()"><b>Calculate Results &ensp;</b> <i class="bi bi-arrow-right"></i></button>
   </div>
 </div>
 </template>
