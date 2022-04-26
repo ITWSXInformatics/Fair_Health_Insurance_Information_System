@@ -1,7 +1,6 @@
 <script setup>
 import { ref } from 'vue'
 import {store} from "../store.js"
-import "../index.js"
 defineProps({
   msg: String
 })

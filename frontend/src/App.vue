@@ -33,17 +33,18 @@ fetch("/api/exampleGetEndpoint", {
 
 <div>
 <div id="main-plate" class="container-fluid">
+   <h2>Fair Value Calculator</h2>
   <div class="row">
     <div class="col-3">
       <nav class="navbar flex-column navbar-light bg-light">
         <ul class="navbar-nav">
-            <li class="nav-item">
+            <li class="nav-item" id="home">
               <a class="nav-link" href="#" @click.prevent="current_tab=0">Home</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" id="form">
               <a class="nav-link" href="#" @click.prevent="current_tab=1">Form</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" id="results">
               <a class="nav-link" href="#" @click.prevent="current_tab=2">Results</a>
             </li>
             
@@ -125,5 +126,43 @@ hr {
 
 h5 {
   margin-bottom: 1%;
+}
+
+#home{
+   position: absolute;
+   width: 220px;
+   height: 56px;
+   left: 110px;
+   top: 226px;
+   color:white;
+   background-color: rgba(89, 167, 255, 1);
+}
+
+#form{
+   position: absolute;
+   width: 220px;
+   height: 56px;
+   left: 111px;
+   top: 292px;
+
+   border-radius: 15px;
+}
+
+#results{
+   position: absolute;
+   width: 220px;
+   height: 56px;
+   left: 110px;
+   top: 352px;
+   
+}
+
+h2{
+   color:rgba(66, 134, 219, 1);
+   position: absolute;
+   width: 193px;
+   height: 29px;
+   left: 146px;
+   top: 150px;
 }
 </style>
