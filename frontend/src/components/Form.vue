@@ -60,12 +60,26 @@ const isvalid_gender = computed(() => {
 
 function calculateResults(){
   if (store.incomeBracket && store.ageBracket && store.dependents){
+    hitApi()
+
     console.log("hit api with store state");
   }else{
     validated.value = true;
   }
 }
-
+function hitApi(){
+  console.log("hit api with store state");
+  fetch("/api/exampleGetEndpoint", {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    }
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      console.log("hit api with store state: ", data);
+    });
+}
 </script>
 
 <template>
@@ -232,7 +246,7 @@ function calculateResults(){
   <h3>Your Inputs </h3>
   <br>
   <p><b>Income Bracket:</b> <p v-if="store.incomeBracket != null">{{store.incomeBracket}}</p></p>
-  <p><b>Age:</b> {{store.age}} <p v-if="store.age != null"> {{store.age}}</p></p>
+  <p><b>Age:</b> {{store.age}} <p v-if="store.age != null"> {{store.ageBracket}}</p></p>
   <p><b>Number of Dependents:</b> <p v-if="store.dependents != null"></p>{{store.dependents}} Dependent(s)</p>
   <p><b>Gender:</b> <p v-if="store.gender">{{store.gender}}</p></p>
 </div>
