@@ -5,7 +5,7 @@ import {store} from "../store.js"
 
 onMounted(() => {
               console.log("Results page")
-              dummySelect();
+              loadSelect();
             })
 
 
@@ -15,6 +15,15 @@ function dummySelect(income_bracket){
   store.dependents_D = 300;
   store.gender_D = "Other";
   store.someValue_D = 5000;
+}
+
+//We can use this intermediary load function to do additional calculations if needed
+function loadSelect(income_bracket){
+  store.incomeBracket_D = store.incomeBracket;
+  store.age_D =  store.age;
+  store.dependents_D = store.dependents;
+  store.gender_D = store.gender;
+  store.someValue_D = 5000; //TBD
 }
 
 defineProps({
