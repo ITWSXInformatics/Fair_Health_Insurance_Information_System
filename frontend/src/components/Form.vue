@@ -1,6 +1,10 @@
 <script setup>
 import { computed, onMounted, ref } from 'vue'
 import {store} from "../store.js"
+store.ageBracket = null;
+store.dependents = null;
+store.incomeBracket = null;
+store.gender = null;
 // define emits for the form
 const emit = defineEmits(['setTab'])
 onMounted(() => {
@@ -181,8 +185,15 @@ const isvalid_gender = computed(() => {
 });
 
 function calculateResults(){
-    console.log("calc results")
-    emit('setTab');
+  // check store vars are non null
+  if(store.dependents != null && store.gender != null && store.incomeBracket != null && store.ageBracket != null){
+  console.log("calc results")
+  emit('setTab');
+
+  }else{
+    validated.value = true;
+  }
+
 }
 
 </script>
