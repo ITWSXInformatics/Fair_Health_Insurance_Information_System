@@ -54,7 +54,7 @@ fetch("/api/exampleGetEndpoint", {
       </div>
       <div class="col-9">
         <Home v-if="current_tab==0"></Home>
-        <Form v-if="current_tab==1"></Form>
+        <Form v-if="current_tab==1" @set-tab="current_tab=2"></Form>
         <Results v-if="current_tab==2"></Results>
         <br>
       </div>

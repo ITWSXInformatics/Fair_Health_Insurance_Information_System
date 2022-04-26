@@ -1,6 +1,8 @@
 <script setup>
 import { computed, onMounted, ref } from 'vue'
 import {store} from "../store.js"
+// define emits for the form
+const emit = defineEmits(['setTab'])
 onMounted(() => {
   console.log("form page loaded!")
 })
@@ -179,27 +181,10 @@ const isvalid_gender = computed(() => {
 });
 
 function calculateResults(){
-  if (store.incomeBracket && store.ageBracket && store.dependents){
-    hitApi()
+    console.log("calc results")
+    emit('setTab');
+}
 
-    console.log("hit api with store state");
-  }else{
-    validated.value = true;
-  }
-}
-function hitApi(){
-  console.log("hit api with store state");
-  fetch("/api/exampleGetEndpoint", {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-    }
-  })
-    .then((res) => res.json())
-    .then((data) => {
-      console.log("hit api with store state: ", data);
-    });
-}
 </script>
 
 <template>
