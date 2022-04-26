@@ -10,11 +10,11 @@ onMounted(() => {
 
 
 function dummySelect(income_bracket){
-  store.incomeBracket = 300;
-  store.age = 300;
-  store.dependents = 300;
-  store.gender = "Other";
-  store.someValue = 5000;
+  store.incomeBracket_D = 300;
+  store.age_D = 300;
+  store.dependents_D = 300;
+  store.gender_D = "Other";
+  store.someValue_D = 5000;
 }
 
 defineProps({
@@ -32,15 +32,15 @@ const count = ref(0)
         <div class="res-row">
 
           <h3>Your Inputs </h3>
-          <p><b>Income Bracket:</b> {{store.incomeBracket}}</p>
-          <p><b>Age:</b> {{store.age}}</p>
-          <p><b>Number of Dependents:</b> {{store.dependents}} Dependent(s)</p>
-          <p><b>Gender:</b> {{store.gender}}</p>
+          <p><b>Income Bracket:</b> {{store.incomeBracket_D}}</p>
+          <p><b>Age:</b> {{store.age_D}}</p>
+          <p><b>Number of Dependents:</b> {{store.dependents_D}} Dependent(s)</p>
+          <p><b>Gender:</b> {{store.gender_D}}</p>
         </div>
 
         <div class="res-row">
           <h3>Your Calculated Insurance Value </h3>
-          <h4>${{store.someValue}}</h4>
+          <h4>${{store.someValue_D}}</h4>
         </div>
 
 
