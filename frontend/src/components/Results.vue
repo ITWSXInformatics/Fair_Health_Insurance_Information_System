@@ -20,7 +20,7 @@ function dummySelect(income_bracket){
 //We can use this intermediary load function to do additional calculations if needed
 function loadSelect(income_bracket){
   store.incomeBracket_D = store.incomeBracket;
-  store.age_D =  store.age;
+  store.age_D =  store.ageBracket;
   store.dependents_D = store.dependents;
   store.gender_D = store.gender;
   store.someValue_D = 5000; //TBD
