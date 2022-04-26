@@ -17,6 +17,126 @@ function dependentsSelect(dependents){
   store.dependents = dependents;
 }
 const validated = ref(false);
+const incomeFormat = computed(() => {
+  if (store.incomeBracket == 0){
+    return "<$40,000";
+  }
+  else if (store.incomeBracket == 0){
+    return "$10,000 - $24,999";
+  }
+  else if (store.incomeBracket == 1){
+    return "$40,000-$60,000";
+  }
+  else if (store.incomeBracket == 2){
+    return "$60,001-$80,000";
+  }
+  else if (store.incomeBracket == 3){
+    return "$80,001-$100,000";
+  }
+  else if (store.incomeBracket == 4){
+    return "> $100,001";
+  }
+  else if (store.incomeBracket == "6"){
+    return "$150,000 - $199,999";
+  }
+  else if (store.incomeBracket == "7"){
+    return "$200,000 - $249,999";
+  }
+  else if (store.incomeBracket == "8"){
+    return "$250,000 - $299,999";
+  }
+  else if (store.incomeBracket == "9"){
+    return "$300,000 - $399,999";
+  }
+  else if (store.incomeBracket == "10"){
+    return "$400,000 - $499,999";
+  }
+  else if (store.incomeBracket == "11"){
+    return "$500,000 - $599,999";
+  }
+  else if (store.incomeBracket == "12"){
+    return "$600,000 - $699,999";
+  }
+  else if (store.incomeBracket == "13"){
+    return "$700,000 - $799,999";
+  }
+  else if (store.incomeBracket == "14"){
+    return "$800,000 - $899,999";
+  }
+  else if (store.incomeBracket == "15"){
+    return "$900,000 - $999,999";
+  }
+});
+const dependentsFormat = computed(() => {
+  if (store.dependents == "0"){
+    return "0";
+  }
+  else if (store.dependents == "1"){
+    return "1";
+  }
+  else if (store.dependents == "2"){
+    return "2";
+  }
+  else if (store.dependents == "3"){
+    return "3";
+  }
+  else if (store.dependents == "4"){
+    return "4";
+  }
+  else if (store.dependents == "5"){
+    return "5";
+  }
+  else if (store.dependents == "6"){
+    return "6";
+  }
+  else if (store.dependents == "7"){
+    return "7";
+  }
+  else if (store.dependents == "8"){
+    return "8";
+  }
+  else if (store.dependents == "9"){
+    return "9";
+  }
+  else if (store.dependents == "10"){
+    return "10";
+  }
+  else if (store.dependents == "11"){
+    return "11";
+  }
+  else if (store.dependents == "12"){
+    return "12";
+  }
+  else if (store.dependents == "13"){
+    return "13";
+  }
+  else if (store.dependents == "14"){
+    return "14";
+  }
+  else if (store.dependents == "15"){
+    return "15";
+  }
+});
+const ageFormat = computed(() => {
+  if (store.ageBracket == "0"){
+    return "<21"
+  }
+  else if (store.ageBracket == "1"){
+    return "21-39"
+  }
+  else if (store.ageBracket == "2"){
+    return "40-59"
+  }
+  else if (store.ageBracket == "3"){
+    return "60-79"
+  }
+  else if (store.ageBracket == "4"){
+    return ">80"
+  }
+  else if (store.ageBracket == "5"){
+    return "65+"
+  }
+})
 const isvalid = computed(() => {
   // check all store values are non null
   if (store.incomeBracket != null && store.ageBracket != null && store.dependents != null) {
@@ -245,8 +365,8 @@ function hitApi(){
 <div class="inputs mb-3"> 
   <h3>Your Inputs </h3>
   <br>
-  <p><b>Income Bracket:</b> <p v-if="store.incomeBracket != null">{{store.incomeBracket}}</p></p>
-  <p><b>Age:</b> {{store.age}} <p v-if="store.age != null"> {{store.ageBracket}}</p></p>
+  <p><b>Income Bracket:</b> <p v-if="store.incomeBracket != null">{{incomeFormat}}</p></p>
+  <p><b>Age:</b> {{store.age}} <p v-if="store.ageBracket != null"> {{ageFormat}}</p></p>
   <p><b>Number of Dependents:</b> <p v-if="store.dependents != null"></p>{{store.dependents}} Dependent(s)</p>
   <p><b>Gender:</b> <p v-if="store.gender">{{store.gender}}</p></p>
 </div>
