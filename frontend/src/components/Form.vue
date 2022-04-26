@@ -1,12 +1,8 @@
 <script setup>
 import { computed, onMounted, ref } from 'vue'
 import {store} from "../store.js"
-
 onMounted(() => {
   console.log("form page loaded!")
-
-defineProps({
-  msg: String
 })
 function incomeRadioSelect(income_bracket){
   console.log("incomeRadioSelect: income_value bin: ", income_bracket);
