@@ -24,7 +24,22 @@ function loadSelect(income_bracket){
   store.age_D =  store.ageBracket;
   store.dependents_D = store.dependents;
   store.gender_D = store.gender;
-  store.someValue_D = 5000; //TBD
+    
+
+    store.r = store.ageBracket * 40;
+    store.m = store.incomeBracket+5;
+    
+    store.value=5;
+
+    if (store.value >  store.r){
+        store.r += store.value * (1 + store.value / store.m);
+    };
+        
+    if (store.r > store.m){
+        store.r = store.m;
+    }
+    
+  store.someValue_D = store.r*10000;
 }
 
 //renamed to minimze confusion with differnet form function
@@ -63,7 +78,8 @@ const count = ref(0)
   <h1><b>Results</b></h1>
         <div class="home-text">
 
-        <div class="res-row">
+
+        <div class="res-row-left">
 
           <h3>Your Inputs </h3>
 
@@ -75,14 +91,16 @@ const count = ref(0)
             </div> 
         </div>
 
-        <div class="res-row">
+        <div class="res-row-right">
           <h3>Your Calculated Insurance Value </h3>
           <h4>${{store.someValue_D}}</h4>
         </div>
-
+    
+        <div class="w-50"></div>
 
         <div class="res-row">
-          <h3>Graphs </h3>
+          <h3>Graph </h3>
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Graph-bar-line-fallback-illustration.svg/593px-Graph-bar-line-fallback-illustration.svg.png" alt="Girl in a jacket"> 
         </div>
         </div>
 </div>
@@ -120,6 +138,32 @@ a {
   padding-right: 3%;
   padding-top: 2%;
   padding-bottom: 2%;
+  margin-top:10%;
+}
+
+.res-row-left {
+  background: #CCFFFF;
+  box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.05);
+  border-radius: 10px;
+  padding-left: 3%;
+  padding-right: 3%;
+  padding-top: 2%;
+  padding-bottom: 2%;
+  width: 50%;
+  float: left;
+  padding: 20px;
+}
+
+
+.res-row-right {
+  background: #CCFFFF;
+  box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.05);
+  border-radius: 10px;
+  padding-left: 3%;
+  padding-right: 3%;
+  padding-top: 2%;
+  padding-bottom: 2%;
+  margin-left:50%
 }
 
 
