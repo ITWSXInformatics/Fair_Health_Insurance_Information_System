@@ -6,10 +6,11 @@ import {store} from "../store.js"
 onMounted(() => {
               console.log("Results page")
               loadSelect();
+              determineResults();
             })
 
-
-function dummySelect(income_bracket){
+//debug command, call to verify value diplsay
+function debugDisplay(income_bracket){
   store.incomeBracket_D = 300;
   store.age_D = 300;
   store.dependents_D = 300;
@@ -24,6 +25,30 @@ function loadSelect(income_bracket){
   store.dependents_D = store.dependents;
   store.gender_D = store.gender;
   store.someValue_D = 5000; //TBD
+}
+
+//renamed to minimze confusion with differnet form function
+function determineResults(){
+  if (store.incomeBracket && store.ageBracket && store.dependents){
+    hitApi()
+    console.log("Solving for inputs...");
+  }
+  else{
+    console.log("An error occured with the inputs."); //TODO replace with notification
+  }
+}
+function hitApi(){
+  console.log("hit api with store state");
+  fetch("/api/exampleGetEndpoint", {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    }
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      console.log("hit api with store state: ", data);
+    });
 }
 
 defineProps({
@@ -41,10 +66,13 @@ const count = ref(0)
         <div class="res-row">
 
           <h3>Your Inputs </h3>
-          <p><b>Income Bracket:</b> {{store.incomeBracket_D}}</p>
-          <p><b>Age:</b> {{store.age_D}}</p>
-          <p><b>Number of Dependents:</b> {{store.dependents_D}} Dependent(s)</p>
-          <p><b>Gender:</b> {{store.gender_D}}</p>
+
+             <div class="grid-ins">
+              <div class="grid-item"><b>💵 Income Bracket:</b> {{store.incomeBracket_D}}</div>
+              <div class="grid-item"><b>📅 Age:</b> {{store.age_D}}</div>
+              <div class="grid-item"><b>🧑‍🤝‍🧑 Number of Dependents:</b> {{store.dependents_D}} Dependent(s)</div>
+              <div class="grid-item"><b>⚥ Gender:</b> {{store.gender_D}}</div>
+            </div> 
         </div>
 
         <div class="res-row">
@@ -92,5 +120,19 @@ a {
   padding-right: 3%;
   padding-top: 2%;
   padding-bottom: 2%;
+}
+
+
+.grid-ins {
+  display: grid;
+  grid-template-columns: auto auto;
+  padding: 10px;
+}
+
+
+.grid-items {
+  display: inline-grid;
+  padding: 20px;
+  text-align: center;
 }
 </style>
