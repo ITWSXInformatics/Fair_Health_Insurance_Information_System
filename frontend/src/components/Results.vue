@@ -85,7 +85,7 @@ a {
 
 
 .res-row {
-  background: beige;
+  background: #CCFFFF;
   box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.05);
   border-radius: 10px;
   padding-left: 3%;
