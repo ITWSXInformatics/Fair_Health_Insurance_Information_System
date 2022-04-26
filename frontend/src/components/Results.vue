@@ -1,6 +1,21 @@
 <script setup>
-import { ref } from 'vue'
-import "../store.js"
+import { computed, onMounted, ref } from 'vue'
+import {store} from "../store.js"
+
+
+onMounted(() => {
+              console.log("Results page")
+              dummySelect();
+            })
+
+
+function dummySelect(income_bracket){
+  store.incomeBracket = 300;
+  store.age = 300;
+  store.dependents = 300;
+  store.gender = "Other";
+  store.someValue = 5000;
+}
 
 defineProps({
   msg: String
@@ -17,11 +32,15 @@ const count = ref(0)
         <div class="res-row">
 
           <h3>Your Inputs </h3>
-
+          <p><b>Income Bracket:</b> {{store.incomeBracket}}</p>
+          <p><b>Age:</b> {{store.age}}</p>
+          <p><b>Number of Dependents:</b> {{store.dependents}} Dependent(s)</p>
+          <p><b>Gender:</b> {{store.gender}}</p>
         </div>
 
         <div class="res-row">
           <h3>Your Calculated Insurance Value </h3>
+          <h4>${{store.someValue}}</h4>
         </div>
 
 
