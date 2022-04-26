@@ -1,21 +1,68 @@
 <script setup>
-import { ref } from 'vue'
+import { computed, onMounted, ref } from 'vue'
 import {store} from "../store.js"
-
-defineProps({
-  msg: String
-})
-
-const count = ref(0)
-
-
-function validateForm() { //UNFINISHED
-    let x = document.forms["myForm"]["fname"].value;
-    if (x == "") {
-      alert("Name must be filled out");
-      return false;
-    }
+function incomeRadioSelect(income_bracket){
+  console.log("incomeRadioSelect: income_value bin: ", income_bracket);
+  store.incomeBracket = income_bracket;
+}
+function ageSelect(age_bracket){
+  console.log("ageSelect: age_value bin: ", age_bracket);
+  store.ageBracket = age_bracket;
+}
+function dependentsSelect(dependents){
+  console.log("dependentsSelect: dependents: ", dependents);
+  store.dependents = dependents;
+}
+const validated = ref(false);
+const isvalid = computed(() => {
+  // check all store values are non null
+  if (store.incomeBracket != null && store.ageBracket != null && store.dependents != null) {
+    return true;
+  } else {
+    return false;
   }
+}); 
+const isvalid_income = computed(() => {
+  // check all store values are non null
+  if (store.incomeBracket != null) {
+    return true;
+  } else {
+    return false;
+  }
+}); 
+const isvalid_age = computed(() => {
+  // check all store values are non null
+  if (store.ageBracket != null) {
+    return true;
+  } else {
+    return false;
+  }
+}); 
+const isvalid_dependents = computed(() => {
+  // check all store values are non null
+  if (store.dependents != null) {
+    return true;
+  } else {
+    return false;
+  }
+}); 
+const isvalid_gender = computed(() => {
+  // check all store values are non null
+  if (store.gender != null) {
+    return true;
+  } else {
+    return false;
+  }
+});
+
+function calculateResults(){
+  if (store.incomeBracket && store.ageBracket && store.dependents){
+    console.log("hit api with store state");
+  }else{
+    validated.value = true;
+  }
+}
+
 </script>
 
 <template>
@@ -30,29 +77,33 @@ function validateForm() { //UNFINISHED
     <h3 class="text-start">Income</h3>
     <p class="text-start subtext">What is the range of your income (USD)?</p>
     <div style="margin-left: 10px;">
-      <div class="row">
+      <div class="row" v-if="validated && !isvalid_income">
+        <div class="alert alert-danger" role="alert">
+          You must select an income bracket!
+      </div>
+      </div>
 
-        <div class="col"><div class="form-check test-start">
-            <input class="form-check-input" type="radio" name="incomeRadio" id="40k" value="< $40,000" v-model="store.incomeBracket">
+      <div class="row">
+        <div class="col"><div class="form-check test-start" @click="incomeRadioSelect(0)">
+            <input class="form-check-input" type="radio" name="incomeRadio" id="40k" value="< $40,000">
             <label class="form-check-label" for="40k">&#60 $40,000</label>
           </div>
-
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="incomeRadio" id="4060k" value="$40,000-$60,000" v-model="store.incomeBracket">
+          <div class="form-check" @click="incomeRadioSelect(1)">
+            <input class="form-check-input" type="radio" name="incomeRadio" id="4060k" value="$40,000-$60,000">
             <label class="form-check-label" for="4060k">$40,000-$60,000</label>
         </div></div>
       
-        <div class="col"><div class="form-check test-start">
-            <input class="form-check-input" type="radio" name="incomeRadio" id="6080k" value="$60,001-$80,000" v-model="store.incomeBracket">
+        <div class="col"><div class="form-check test-start" @click="incomeRadioSelect(2)">
+            <input class="form-check-input" type="radio" name="incomeRadio" id="6080k" value="$60,001-$80,000">
             <label class="form-check-label" for="6080k">$60,001-$80,000</label>
           </div>
         
-          <div class="form-check"><input class="form-check-input" type="radio" name="incomeRadio" id="80100k" value="$80,001-$100,000" v-model="store.incomeBracket">
+          <div class="form-check" @click="incomeRadioSelect(3)"><input class="form-check-input" type="radio" name="incomeRadio" id="80100k" value="$80,001-$100,000">
             <label class="form-check-label" for="80100k">$80,001-$100,000</label>
         </div></div>
 
-        <div class="col"><div class="form-check test-start">
-            <input class="form-check-input" type="radio" name="incomeRadio" id="101k" value="> $100,001" v-model="store.incomeBracket">
+        <div class="col"><div class="form-check test-start" @click="incomeRadioSelect(4)">
+            <input class="form-check-input" type="radio" name="incomeRadio" id="101k" value="> $100,001">
             <label class="form-check-label" for="101k">&#62 $100,001</label>
         </div></div>         
       </div>
@@ -64,30 +115,36 @@ function validateForm() { //UNFINISHED
   <h3 class="text-start">Age</h3>
   <p class="text-start subtext">What is your age range?</p>
   <div style="margin-left: 10px;">
+
+      <div class="row" v-if="validated && !isvalid_age">
+        <div class="alert alert-danger" role="alert">
+          You must select an age range!
+      </div>
+      </div>
     <div class="row">
 
       <div class="col"><div class="form-check test-start">
-          <input class="form-check-input" type="radio" name="ageRadio" id="a21" value="< 21" v-model="store.age">
+          <input class="form-check-input" type="radio" name="ageRadio" id="a21" value="< 21" @click="ageSelect(0)">
           <label class="form-check-label" for="a21">&#60 21</label>
         </div>
         
         <div class="form-check">
-          <input class="form-check-input" type="radio" name="ageRadio" id="a2139" value="21-39" v-model="store.age">
+          <input class="form-check-input" type="radio" name="ageRadio" id="a2139" value="21-39" @click="ageSelect(1)">
           <label class="form-check-label" for="a2139">21-39</label>
       </div></div>
     
       <div class="col"><div class="form-check test-start">
-          <input class="form-check-input" type="radio" name="ageRadio" id="a4059" value="40-59" v-model="store.age">
+          <input class="form-check-input" type="radio" name="ageRadio" id="a4059" value="40-59" @click="ageSelect(2)">
           <label class="form-check-label" for="a4059">40-59</label>
         </div>
       
         <div class="form-check">
-          <input class="form-check-input" type="radio" name="ageRadio" id="a6079" value="60-79" v-model="store.age">
+          <input class="form-check-input" type="radio" name="ageRadio" id="a6079" value="60-79" @click="ageSelect(3)">
           <label class="form-check-label" for="a6079">60-79</label>
       </div></div>
 
       <div class="col"><div class="form-check test-start">
-          <input class="form-check-input" type="radio" name="ageRadio" id="a80" value="> 80" v-model="store.age">
+          <input class="form-check-input" type="radio" name="ageRadio" id="a80" value="> 80" @click="ageSelect(4)">
           <label class="form-check-label" for="a80">> 80</label>
       </div></div>         
 
@@ -99,6 +156,11 @@ function validateForm() { //UNFINISHED
   <h3 class="text-start">Number of Dependents</h3>
   <p class="text-start subtext">How many dependents do you currently have?</p>
   <div style="margin-left: 10px;">
+      <div class="row" v-if="validated && !isvalid_dependents">
+        <div class="alert alert-danger" role="alert">
+          You must select some number of dependents!
+      </div>
+      </div>
     <div class="row">
 
       <div class="col"><div class="form-check test-start">
@@ -130,10 +192,16 @@ function validateForm() { //UNFINISHED
   </div>
 </div>
 <br>
-<div class="question">
+<div class="question mb-4">
   <h3 class="text-start">Gender</h3>
   <p class="text-start subtext">What is your gender?</p>
   <div style="margin-left: 10px;">
+         <div class="row" v-if="validated && !isvalid_gender">
+        <div class="alert alert-danger" role="alert">
+          You must select some gender!
+      </div>
+      </div>
+ 
     <div class="row">
 
       <div class="col"><div class="form-check test-start">
@@ -157,19 +225,18 @@ function validateForm() { //UNFINISHED
 </form>
 <br>
 <br>
-<div class="inputs"> 
+<div class="inputs mb-3"> 
   <h3>Your Inputs </h3>
   <br>
-  <p><b>Income Bracket:</b> {{store.incomeBracket}}</p>
-  <p><b>Age:</b> {{store.age}}</p>
-  <p><b>Number of Dependents:</b> {{store.dependents}} Dependent(s)</p>
-  <p><b>Gender:</b> {{store.gender}}</p>
+  <p><b>Income Bracket:</b> <p v-if="store.incomeBracket != null">{{store.incomeBracket}}</p></p>
+  <p><b>Age:</b> {{store.age}} <p v-if="store.age != null"> {{store.age}}</p></p>
+  <p><b>Number of Dependents:</b> <p v-if="store.dependents != null"></p>{{store.dependents}} Dependent(s)</p>
+  <p><b>Gender:</b> <p v-if="store.gender">{{store.gender}}</p></p>
 </div>
-
 <br>
 <br>
   <div>
-  <button type="button" id="submit" class="btn"><b>Calculate Results &ensp;</b> <i class="bi bi-arrow-right"></i></button>
+  <button type="button" id="submit" class="btn" @click="calculateResults()"><b>Calculate Results &ensp;</b> <i class="bi bi-arrow-right"></i></button>
   </div>
 </div>
 </template>
